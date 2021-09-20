@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 template <class T>
@@ -8,6 +9,7 @@ private:
     T *array;
     int capacity;
     int back, front;
+    bool empty = true;
     
 public:
     CircularArray();
@@ -15,6 +17,7 @@ public:
     virtual ~CircularArray();
     void push_front(T data);
     void push_back(T data);
+    void resize(int new_capacity);
     void insert(T data, int pos);
     T pop_front();
     T pop_back();
@@ -44,7 +47,7 @@ CircularArray<T>::CircularArray(int _capacity)
 {
     this->array = new T[_capacity];
     this->capacity = _capacity;
-    this->front = this->back = -1;
+    this->back = this->front = 0;
 }
 
 template <class T>
